@@ -15,7 +15,7 @@ permissions:
 
 env:
   AWS_REGION: ap-northeast-1
-  TF_VERSION: 1.2.8
+  TF_VERSION: 1.4.4
   TF_PROJECT: tastylog
   TF_ENVIRONMENT: dev
 
@@ -38,8 +38,8 @@ jobs:
       - name: Terraform format
         run: |
           terraform fmt -check
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Configure AWS Credential
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ env.AWS_REGION }}
           role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
@@ -50,6 +50,7 @@ jobs:
         run: |
           terraform validate -no-color
       - name: Terraform plan
+        id: plan
         run: |
           terraform plan \
             -var 'project=${{ env.TF_PROJECT }}' \
