@@ -60,5 +60,3 @@ jobs:
             -input=false \
             -no-color \
             -detailed-exitcode
-      - name: Terraform plan exit code
-        run: echo $?
