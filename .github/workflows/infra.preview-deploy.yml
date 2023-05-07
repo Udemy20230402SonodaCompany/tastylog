@@ -59,5 +59,4 @@ jobs:
             -var 'password=${{ secrets.MYSQL_PASSWORD }}' \
             -input=false \
             -no-color \
-            -detailed-exitcode \
-          &echo $?
+            -detailed-exitcode & echo $?
