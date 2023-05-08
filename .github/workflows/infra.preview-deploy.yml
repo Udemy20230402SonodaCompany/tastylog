@@ -63,7 +63,8 @@ jobs:
             -input=false \
             -no-color \
             -detailed-exitcode
-      - run: echo "result=${{ steps.plan.outputs.exitcode }}"
+          echo "::set-output name=exitcode2::$?"
+      - run: echo "result=${{ steps.plan.outputs.exitcode2 }}"
       - name: Slack notify
         if: steps.plan.outputs.exitcode == 2
         uses: slackapi/slack-github-action@v1.23.0
