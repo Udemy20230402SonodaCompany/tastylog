@@ -67,7 +67,7 @@ jobs:
         if: steps.plan.outputs.exitcode == 2
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          channel-id: "C056HEG0MEZ"
+          channel-id: "${{ secrets.SLACK_CHANNEL_ID }}"
           payload: |
             {
                 "attachments": [
